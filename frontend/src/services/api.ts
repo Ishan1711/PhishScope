@@ -1,7 +1,7 @@
 import axios from 'axios';
 import type { AnalysisResult } from '../types';
 
-const API_BASE = 'http://localhost:5000/api/v1';
+const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:5000/api/v1';
 
 export const analyzeText = async (text: string): Promise<AnalysisResult> => {
   const response = await axios.post(`${API_BASE}/analyze/text`, { text });

@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import './Card.css';
 
 interface CardProps {
-  children: React.ReactNode;
-  title?: string;
+  title?: ReactNode;
+  children: ReactNode;
   className?: string;
-  action?: React.ReactNode;
+  headerAction?: ReactNode;
 }
 
-const Card: React.FC<CardProps> = ({ children, title, className = '', action }) => {
+const Card: React.FC<CardProps> = ({ title, children, className = '', headerAction }) => {
   return (
-    <div className={`custom-card ${className}`}>
-      {(title || action) && (
+    <div className={`custom-card card-hover-effect ${className}`}>
+      {title && (
         <div className="card-header">
-          {title && <h3 className="card-title">{title}</h3>}
-          {action && <div className="card-action">{action}</div>}
+          <h2 className="card-title">{title}</h2>
+          {headerAction && <div className="card-action">{headerAction}</div>}
         </div>
       )}
       <div className="card-body">

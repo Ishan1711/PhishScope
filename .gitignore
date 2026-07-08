@@ -1,33 +1,63 @@
-# Python
+# ============================================================
+# PhishScope v2.0 — .gitignore
+# ============================================================
+
+# ── Python ──────────────────────────────────────────────────
 backend/venv/
 backend/__pycache__/
+backend/app/__pycache__/
+backend/app/api/__pycache__/
+backend/app/models/__pycache__/
+backend/app/services/__pycache__/
+backend/app/utils/__pycache__/
 *.pyc
 *.pyo
+*.pyd
+*.egg-info/
+.eggs/
+*.egg
 
-# Node
+# ── Uploaded Files (temp) ────────────────────────────────────
+backend/uploads/*.eml
+backend/uploads/*.txt
+
+# ── Node ─────────────────────────────────────────────────────
 frontend/node_modules/
 frontend/dist/
+frontend/.vite/
 
-# Environment
+# ── Environment Secrets ──────────────────────────────────────
 .env
 backend/.env
 frontend/.env
+frontend/.env.local
+frontend/.env.production
+*.env.local
+*.env.production
+*.env.development
 
-# IDE
+# ── IDE ──────────────────────────────────────────────────────
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# OS
+# ── OS ───────────────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+desktop.ini
 
-# Logs
+# ── Logs ─────────────────────────────────────────────────────
 *.log
+backend/logs/*.log
 
-# Python cache
+# ── Testing & Coverage ───────────────────────────────────────
 .pytest_cache/
 .mypy_cache/
+htmlcov/
+.coverage
+coverage.xml
 
-# Build
+# ── Build Artifacts ──────────────────────────────────────────
 build/
 dist/

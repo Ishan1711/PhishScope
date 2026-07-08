@@ -1,0 +1,86 @@
+.risk-gauge {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.risk-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.risk-score-display {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.risk-score-val {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.risk-score-max {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.risk-level-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 8px;
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--bg-main);
+}
+
+.risk-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.risk-bar-track {
+  height: 8px;
+  background: var(--bg-input);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border-color);
+}
+
+.risk-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width var(--transition-spring), background-color var(--transition-normal);
+}
+
+.risk-bar-markers {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.risk-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--border-color);
+}
+
+.risk-confidence {
+  font-weight: 700;
+  color: var(--text-main);
+}

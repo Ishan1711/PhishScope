@@ -5,8 +5,12 @@
 
 .field-row {
   display: flex;
-  padding: 0.75rem 0;
+  padding: 0.85rem 0;
   border-bottom: 1px solid var(--border-color);
+  transition: background-color var(--transition-fast);
+}
+.field-row:hover {
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 .field-row:last-child {
@@ -17,9 +21,11 @@
 .field-label {
   width: 140px;
   flex-shrink: 0;
-  font-size: 0.875rem;
+  font-size: 13px;
   font-weight: 600;
   color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .field-value-container {
@@ -32,10 +38,11 @@
 }
 
 .field-value {
-  font-size: 0.875rem;
+  font-size: 13px;
   color: var(--text-main);
   word-break: break-all;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: var(--font-mono, 'Courier New', Courier, monospace);
+  line-height: 1.5;
 }
 
 .copy-btn {
@@ -45,26 +52,32 @@
   padding: 0.25rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all var(--transition-fast);
   flex-shrink: 0;
+  opacity: 0.5;
 }
 
+.field-row:hover .copy-btn {
+  opacity: 1;
+}
 .copy-btn:hover {
   background-color: var(--bg-card-hover);
-  color: var(--text-main);
+  color: var(--primary);
 }
 
 .hidden-ip-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.8rem;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--text-muted);
   background: var(--bg-card-hover);
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.5rem;
   border-radius: 4px;
   cursor: help;
   font-family: var(--font-family);
+  border: 1px solid var(--border-color);
 }
 
 .info-icon {

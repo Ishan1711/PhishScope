@@ -1,26 +1,33 @@
 .custom-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 6px; /* slightly sharper for enterprise */
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  /* Very subtle shadow for dark mode */
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
 }
 
 .card-header {
-  padding: 1.25rem 1.5rem;
+  padding: 1rem 1.25rem;
   border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .card-title {
-  font-size: 1.125rem;
+  font-size: 14px;
   font-weight: 600;
   color: var(--text-main);
+  letter-spacing: 0.02em;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .card-body {
-  padding: 1.5rem;
+  padding: 1.25rem;
+  flex: 1;
 }

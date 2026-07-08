@@ -16,7 +16,7 @@ function App() {
         if (parsed && parsed.investigation_id) {
           setCurrentResult(parsed);
         }
-      } catch (e) {
+      } catch {
         console.error("Failed to parse saved analysis");
       }
     }

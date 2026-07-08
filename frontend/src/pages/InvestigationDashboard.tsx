@@ -8,6 +8,10 @@ import IndicatorList from '../components/investigation/IndicatorList';
 import FieldViewer from '../components/investigation/FieldViewer';
 import Timeline from '../components/investigation/Timeline';
 import AIExplanationCard from '../components/investigation/AIExplanationCard';
+import ScoreBreakdown from '../components/investigation/ScoreBreakdown';
+import IocSummaryWidget from '../components/investigation/IocSummaryWidget';
+import UrlAnalysis from '../components/investigation/UrlAnalysis';
+import MitreCard from '../components/investigation/MitreCard';
 import type { AnalysisResult } from '../types';
 import { exportPdf, exportJson } from '../services/api';
 import { Download, FileJson, ArrowLeft } from 'lucide-react';
@@ -22,7 +26,7 @@ const InvestigationDashboard: React.FC<InvestigationDashboardProps> = ({ result,
   const handleExportPDF = async () => {
     try {
       await exportPdf(result);
-    } catch (e) {
+    } catch {
       alert("Failed to export PDF.");
     }
   };
@@ -30,7 +34,7 @@ const InvestigationDashboard: React.FC<InvestigationDashboardProps> = ({ result,
   const handleExportJSON = async () => {
     try {
       await exportJson(result);
-    } catch (e) {
+    } catch {
       alert("Failed to export JSON.");
     }
   };
@@ -76,10 +80,29 @@ const InvestigationDashboard: React.FC<InvestigationDashboardProps> = ({ result,
         <AIExplanationCard explanation={result.ai_explanation} />
 
         <div className="dashboard-grid">
-          {/* Left Column: Risk & Auth */}
+          {/* Left Column */}
           <div className="grid-column left-col">
             <Card title="Threat Assessment" className="mb-4">
               <ScoreWidget risk={result.risk_assessment} />
+            </Card>
+
+            {result.risk_assessment.score_breakdown && result.risk_assessment.score_breakdown.length > 0 && (
+              <Card title="Risk Breakdown" className="mb-4">
+                <ScoreBreakdown 
+                  breakdown={result.risk_assessment.score_breakdown} 
+                  totalScore={result.risk_assessment.threat_score} 
+                />
+              </Card>
+            )}
+
+            {result.risk_assessment.ioc_summary && (
+              <Card title="IOC Summary" className="mb-4">
+                <IocSummaryWidget ioc={result.risk_assessment.ioc_summary} />
+              </Card>
+            )}
+
+            <Card title="Phishing Indicators" className="mb-4">
+              <IndicatorList indicators={result.risk_assessment.indicators} />
             </Card>
 
             <Card title="Authentication Results" className="mb-4">
@@ -93,21 +116,29 @@ const InvestigationDashboard: React.FC<InvestigationDashboardProps> = ({ result,
                 </div>
               )}
             </Card>
-
-            <Card title="Phishing Indicators">
-              <IndicatorList indicators={result.risk_assessment.indicators} />
-            </Card>
           </div>
 
-          {/* Right Column: Details & Timeline */}
+          {/* Right Column */}
           <div className="grid-column right-col">
             <Card title="Extracted Details" className="mb-4">
               <FieldViewer fields={basicFields} />
             </Card>
 
-            <Card title="Routing Timeline (Received Hops)">
+            <Card title="Routing Timeline" className="mb-4">
               <Timeline hops={result.header_data.hops} />
             </Card>
+
+            {result.risk_assessment.url_indicators && result.risk_assessment.url_indicators.length > 0 && (
+              <Card title="URL Analysis" className="mb-4">
+                <UrlAnalysis urlIndicators={result.risk_assessment.url_indicators} />
+              </Card>
+            )}
+
+            {result.risk_assessment.mitre_techniques && result.risk_assessment.mitre_techniques.length > 0 && (
+              <Card title="MITRE ATT&CK® Mapping" className="mb-4">
+                <MitreCard techniques={result.risk_assessment.mitre_techniques} />
+              </Card>
+            )}
           </div>
         </div>
       </main>

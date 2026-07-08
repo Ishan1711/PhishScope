@@ -1,0 +1,128 @@
+.url-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.url-analysis {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.url-summary-row {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 0.5rem;
+}
+
+.url-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.url-stat-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.url-stat-val {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-main);
+  font-variant-numeric: tabular-nums;
+}
+
+.url-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.url-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: background-color var(--transition-fast);
+}
+.url-item:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+.url-item:last-child {
+  border-bottom: none;
+}
+
+.url-item-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.url-item-icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.url-item-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.url-item-domain {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.url-item-full {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono, 'Courier New', Courier, monospace);
+  word-break: break-all;
+}
+
+.url-reasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-left: 1.75rem;
+}
+
+.url-reason-chip {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+  background: var(--warning-bg);
+  border: 1px solid var(--warning-border);
+  border-radius: 4px;
+  color: var(--warning);
+  font-weight: 600;
+}
+
+.url-show-more {
+  font-size: 0.8rem;
+  color: var(--primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  font-weight: 600;
+  text-align: left;
+}
+.url-show-more:hover { color: var(--primary-hover); }

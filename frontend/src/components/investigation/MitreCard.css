@@ -1,0 +1,85 @@
+.mitre-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mitre-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.mitre-icon {
+  color: var(--primary);
+}
+
+.mitre-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.mitre-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px dotted var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: background-color var(--transition-fast);
+}
+.mitre-item:hover {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+.mitre-item:last-child { border-bottom: none; }
+
+.mitre-item-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mitre-id {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: var(--font-mono, 'Courier New', Courier, monospace);
+  text-decoration: none;
+  transition: opacity var(--transition-fast);
+}
+.mitre-id:hover { opacity: 0.8; }
+
+.mitre-tactic {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.mitre-technique-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.mitre-description {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.mitre-footer {
+  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin-top: 0.5rem;
+  opacity: 0.5;
+}

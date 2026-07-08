@@ -1,0 +1,81 @@
+.email-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-property-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: var(--space-3);
+}
+
+.email-property-table tbody tr {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.email-property-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.email-property-label {
+  padding: 8px var(--space-4) 8px 0;
+  width: 25%;
+  min-width: 120px;
+  color: var(--text-muted);
+  font-weight: 500;
+  vertical-align: baseline;
+  white-space: nowrap;
+}
+
+.email-property-value {
+  padding: 8px 0;
+  color: var(--text-main);
+  word-break: break-all;
+  vertical-align: baseline;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.email-copy-btn {
+  color: var(--text-dim);
+  opacity: 0;
+  padding: 2px;
+  transition: opacity var(--transition-fast), color var(--transition-fast);
+}
+
+.email-property-table tr:hover .email-copy-btn {
+  opacity: 1;
+}
+
+.email-copy-btn:hover {
+  color: var(--text-main);
+}
+
+.email-field-dim {
+  color: var(--text-secondary);
+}
+
+.email-redacted {
+  color: var(--warning);
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+}
+
+.email-meta-footer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding-top: var(--space-3);
+}
+
+.email-meta-dup {
+  color: var(--warning);
+  font-weight: 600;
+}

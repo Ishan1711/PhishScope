@@ -3,9 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding: 1.5rem;
-  background-color: var(--bg-card);
-  border-radius: 12px;
-  border: 1px solid var(--border-color);
+  background-color: transparent; /* Card handles the background now */
   min-width: 250px;
 }
 
@@ -17,11 +15,15 @@
   justify-content: center;
   align-items: flex-end;
   margin-bottom: 1rem;
+  transition: transform var(--transition-normal);
+}
+.score-gauge-container:hover {
+  transform: scale(1.02);
 }
 
 .score-value-container {
   position: absolute;
-  bottom: 0;
+  bottom: -5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,26 +32,32 @@
 
 .score-value {
   font-size: 3rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
 
 .score-label {
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--text-muted);
+  font-weight: 600;
 }
 
 .score-details {
   text-align: center;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
 }
 
 .threat-level {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 700;
   margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .confidence {
   font-size: 0.85rem;
   color: var(--text-muted);
+  font-weight: 500;
 }

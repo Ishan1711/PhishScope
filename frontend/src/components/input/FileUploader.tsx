@@ -10,6 +10,15 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onFileSelect }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
+  const handleFile = useCallback((file: File) => {
+    if (file.name.endsWith('.eml') || file.name.endsWith('.txt')) {
+      setSelectedFile(file);
+      onFileSelect(file);
+    } else {
+      alert("Invalid file type. Please upload a .eml or .txt file.");
+    }
+  }, [onFileSelect]);
+
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -29,21 +38,12 @@ const FileUploader: React.FC<FileUploaderProps> = ({ onFileSelect }) => {
       const file = e.dataTransfer.files[0];
       handleFile(file);
     }
-  }, []);
+  }, [handleFile]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     if (e.target.files && e.target.files[0]) {
       handleFile(e.target.files[0]);
-    }
-  };
-
-  const handleFile = (file: File) => {
-    if (file.name.endsWith('.eml') || file.name.endsWith('.txt')) {
-      setSelectedFile(file);
-      onFileSelect(file);
-    } else {
-      alert("Invalid file type. Please upload a .eml or .txt file.");
     }
   };
 
