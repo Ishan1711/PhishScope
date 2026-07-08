@@ -17,9 +17,9 @@ class Config:
     ALLOWED_EXTENSIONS = {'txt', 'eml'}
     
     # AI Provider Settings
-    AI_PROVIDER = os.environ.get('AI_PROVIDER', 'gemini') # 'gemini' or 'openai'
-    GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', '')
-    OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY', '')
+    AI_PROVIDER = os.environ.get('AI_PROVIDER', 'groq')
+    GROQ_API_KEY = os.environ.get('GROQ_API_KEY', '')
+    MODEL_NAME = os.environ.get('MODEL_NAME', 'llama-3.3-70b-versatile')
     
     # Logging Config
     LOG_DIR = os.path.join(BASE_DIR, 'logs')

@@ -1,4 +1,5 @@
-import google.generativeai as genai
+import os
+from groq import Groq
 from config import ActiveConfig
 from app.models.analysis import AnalysisResult
 
@@ -9,17 +10,32 @@ class AIExplainer:
     def generate_explanation(analysis: AnalysisResult) -> str:
         """Calls the LLM API to generate an explanation."""
         
-        if not ActiveConfig.GEMINI_API_KEY:
-            return "AI Explanation is unavailable because the API key is not configured."
+        if not ActiveConfig.GROQ_API_KEY:
+            return "AI Explanation is unavailable because the Groq API key is not configured."
             
         try:
-            genai.configure(api_key=ActiveConfig.GEMINI_API_KEY)
-            model = genai.GenerativeModel('gemini-1.5-flash')
+            client = Groq(
+                api_key=ActiveConfig.GROQ_API_KEY,
+                timeout=15.0,
+                max_retries=2
+            )
             
             prompt = AIExplainer._build_prompt(analysis)
-            response = model.generate_content(prompt)
             
-            return response.text.strip()
+            # Using streaming response conceptually or just standard call with timeout
+            response = client.chat.completions.create(
+                messages=[
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    }
+                ],
+                model=ActiveConfig.MODEL_NAME,
+                temperature=0.3,
+                max_tokens=300
+            )
+            
+            return response.choices[0].message.content.strip()
         except Exception as e:
             # If the API fails, return a safe fallback message
             return f"Error generating AI explanation. Please rely on the indicators above. (Details: {str(e)})"

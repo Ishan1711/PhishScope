@@ -9,7 +9,7 @@ interface AuthStatusGridProps {
 
 const AuthStatusGrid: React.FC<AuthStatusGridProps> = ({ auth }) => {
   const getVariant = (status: string) => {
-    switch(status) {
+    switch(status.toUpperCase()) {
       case 'PASS': return 'success';
       case 'FAIL': return 'danger';
       case 'SOFTFAIL': return 'warning';
@@ -17,19 +17,26 @@ const AuthStatusGrid: React.FC<AuthStatusGridProps> = ({ auth }) => {
     }
   };
 
+  const getBadgeContent = (protocol: string, status: string) => {
+    const s = status.toUpperCase();
+    let icon = '⚪';
+    if (s === 'PASS') icon = '🟢';
+    else if (s === 'FAIL') icon = '🔴';
+    else if (s === 'SOFTFAIL') icon = '🟡';
+    
+    return `${icon} ${protocol} ${s}`;
+  };
+
   return (
-    <div className="auth-grid">
+    <div className="auth-grid card-hover-effect fade-in">
       <div className="auth-item">
-        <span className="auth-label">SPF</span>
-        <Badge variant={getVariant(auth.spf)}>{auth.spf}</Badge>
+        <Badge variant={getVariant(auth.spf)}>{getBadgeContent('SPF', auth.spf)}</Badge>
       </div>
       <div className="auth-item">
-        <span className="auth-label">DKIM</span>
-        <Badge variant={getVariant(auth.dkim)}>{auth.dkim}</Badge>
+        <Badge variant={getVariant(auth.dkim)}>{getBadgeContent('DKIM', auth.dkim)}</Badge>
       </div>
       <div className="auth-item">
-        <span className="auth-label">DMARC</span>
-        <Badge variant={getVariant(auth.dmarc)}>{auth.dmarc}</Badge>
+        <Badge variant={getVariant(auth.dmarc)}>{getBadgeContent('DMARC', auth.dmarc)}</Badge>
       </div>
     </div>
   );

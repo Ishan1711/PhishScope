@@ -75,6 +75,34 @@ class HeaderAnalyzer:
             indicators.append(Indicator(name="Missing Authentication", description="No Authentication-Results header found. The email bypassed modern security checks.", severity="HIGH"))
             confidence -= 20
 
+        # 6. Display Name / Brand Spoofing
+        brands = ["paypal", "microsoft", "apple", "amazon", "google", "facebook", "netflix", "bank"]
+        from_lower = header.from_address.lower() if header.from_address else ""
+        if from_domain:
+            for brand in brands:
+                if brand in from_lower and brand not in from_domain:
+                    score += 30
+                    indicators.append(Indicator(name="Brand Spoofing", description=f"The sender name contains '{brand}' but the domain ({from_domain}) does not.", severity="HIGH"))
+                    break
+
+        # 7. Suspicious Domains (Typosquatting / Cheap TLDs)
+        suspicious_tlds = [".xyz", ".top", ".tk", ".site", ".icu", ".pw", ".cc"]
+        if from_domain:
+            if any(from_domain.endswith(tld) for tld in suspicious_tlds):
+                score += 15
+                indicators.append(Indicator(name="Suspicious TLD", description=f"The sender domain uses a top-level domain often associated with spam.", severity="MEDIUM"))
+            
+            # Unicode domains
+            if from_domain.startswith("xn--"):
+                score += 25
+                indicators.append(Indicator(name="Punycode Domain", description="The sender domain uses Punycode (homograph attack), trying to look like a legitimate domain.", severity="HIGH"))
+
+        # 8. Header Anomalies
+        if not header.subject:
+            score += 10
+            indicators.append(Indicator(name="Missing Subject", description="The email has no subject line.", severity="LOW"))
+
+
         # Calculate final threat level
         threat_score = min(score, 100) # Cap at 100
         

@@ -53,3 +53,20 @@
   background-color: var(--bg-card-hover);
   color: var(--text-main);
 }
+
+.hidden-ip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  background: var(--bg-card-hover);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  cursor: help;
+  font-family: var(--font-family);
+}
+
+.info-icon {
+  color: var(--primary);
+}

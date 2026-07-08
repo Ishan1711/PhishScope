@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+import { Doughnut } from 'react-chartjs-2';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import type { RiskScore } from '../../types';
 import './ScoreWidget.css';
+
+ChartJS.register(ArcElement, Tooltip, Legend);
 
 interface ScoreWidgetProps {
   risk: RiskScore;
@@ -8,33 +12,52 @@ interface ScoreWidgetProps {
 
 const ScoreWidget: React.FC<ScoreWidgetProps> = ({ risk }) => {
   const getScoreColor = () => {
-    if (risk.threat_level === 'SAFE') return 'var(--success)';
-    if (risk.threat_level === 'SUSPICIOUS') return 'var(--warning)';
-    return 'var(--danger)';
+    if (risk.threat_level === 'SAFE') return '#10B981'; // success
+    if (risk.threat_level === 'SUSPICIOUS') return '#F59E0B'; // warning
+    return '#EF4444'; // danger
   };
 
-  const circumference = 2 * Math.PI * 45;
-  const strokeDashoffset = circumference - (risk.threat_score / 100) * circumference;
+  const chartData = useMemo(() => {
+    const value = risk.threat_score;
+    const remainder = 100 - value;
+    return {
+      labels: ['Threat', 'Safe'],
+      datasets: [
+        {
+          data: [value, remainder],
+          backgroundColor: [getScoreColor(), '#27272a'], // border-color for empty part
+          borderWidth: 0,
+          circumference: 180,
+          rotation: 270,
+        },
+      ],
+    };
+  }, [risk.threat_score, risk.threat_level]);
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '80%',
+    plugins: {
+      legend: { display: false },
+      tooltip: { enabled: false },
+    },
+    animation: {
+      animateRotate: true,
+      animateScale: false,
+      duration: 1500,
+      easing: 'easeOutQuart' as const,
+    },
+  };
 
   return (
-    <div className="score-widget">
-      <div className="score-circle-container">
-        <svg className="score-svg" viewBox="0 0 100 100">
-          <circle 
-            className="score-bg" 
-            cx="50" cy="50" r="45" 
-          />
-          <circle 
-            className="score-progress" 
-            cx="50" cy="50" r="45" 
-            stroke={getScoreColor()}
-            strokeDasharray={circumference}
-            strokeDashoffset={strokeDashoffset}
-            transform="rotate(-90 50 50)"
-          />
-        </svg>
+    <div className="score-widget card-hover-effect">
+      <div className="score-gauge-container">
+        <Doughnut data={chartData} options={chartOptions} />
         <div className="score-value-container">
-          <span className="score-value" style={{ color: getScoreColor() }}>{risk.threat_score}</span>
+          <span className="score-value" style={{ color: getScoreColor() }}>
+            {risk.threat_score}
+          </span>
           <span className="score-label">/100</span>
         </div>
       </div>
@@ -49,3 +72,4 @@ const ScoreWidget: React.FC<ScoreWidgetProps> = ({ risk }) => {
 };
 
 export default ScoreWidget;
+
