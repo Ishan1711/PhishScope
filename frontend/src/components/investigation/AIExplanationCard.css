@@ -1,0 +1,37 @@
+.ai-card {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(30, 64, 175, 0.05) 100%);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.ai-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background-color: rgba(59, 130, 246, 0.05);
+  border-bottom: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.ai-icon {
+  color: var(--primary);
+}
+
+.ai-title {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+.ai-card-body {
+  padding: 1.5rem;
+}
+
+.ai-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  margin: 0;
+}

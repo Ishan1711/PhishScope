@@ -1,0 +1,23 @@
+Return-Path: <newsletter@legit-company.com>
+Received: from mail.legit-company.com (mail.legit-company.com [198.51.100.12])
+	by mx.google.com with ESMTPS id u21si12345678wme.150.2023.10.12.08.15.22
+	for <user@example.com>;
+	Thu, 12 Oct 2023 08:15:23 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@legit-company.com header.s=s1 header.b=abcdef;
+       spf=pass (google.com: domain of newsletter@legit-company.com designates 198.51.100.12 as permitted sender) smtp.mailfrom=newsletter@legit-company.com;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=legit-company.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=legit-company.com; s=s1;
+        h=from:to:subject:date:message-id:mime-version:content-type;
+        bh=1234567890abcdefghijklmnopqrstuvwxyz=;
+        b=abcdef...
+From: "Legit Company Updates" <newsletter@legit-company.com>
+To: "Valued Customer" <user@example.com>
+Subject: Your Monthly Update is Here!
+Date: Thu, 12 Oct 2023 15:15:20 +0000
+Message-ID: <1234567890.update@legit-company.com>
+MIME-Version: 1.0
+Content-Type: text/html; charset="UTF-8"
+
+<p>This is a completely legitimate email.</p>

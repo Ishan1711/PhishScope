@@ -1,0 +1,55 @@
+.field-viewer {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-row {
+  display: flex;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.field-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.field-label {
+  width: 140px;
+  flex-shrink: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.field-value-container {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.field-value {
+  font-size: 0.875rem;
+  color: var(--text-main);
+  word-break: break-all;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.copy-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.25rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background-color: var(--bg-card-hover);
+  color: var(--text-main);
+}

@@ -1,0 +1,99 @@
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background-color: var(--border-color);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-icon {
+  position: absolute;
+  left: -1.5rem;
+  width: 16px;
+  height: 16px;
+  background-color: var(--bg-card);
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateX(-4px);
+  color: var(--primary);
+}
+
+.timeline-icon svg {
+  display: none; /* Keep it minimal, simple dot is cleaner */
+}
+
+.timeline-content {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+.hop-number {
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.875rem;
+}
+
+.hop-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.hop-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hop-row {
+  display: flex;
+  font-size: 0.8125rem;
+}
+
+.hop-label {
+  width: 60px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.hop-value {
+  color: var(--text-main);
+  font-family: 'Courier New', Courier, monospace;
+  word-break: break-all;
+}
+
+.no-hops {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 0.875rem;
+}

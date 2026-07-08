@@ -1,0 +1,16 @@
+Return-Path: <bounces@random-hacked-server.ru>
+Received: from unknown (HELO random-hacked-server.ru) (203.0.113.50)
+    by mx.google.com with ESMTP; Thu, 12 Oct 2023 09:22:15 -0700
+Authentication-Results: mx.google.com;
+       spf=softfail (google.com: domain of transitioning bounces@random-hacked-server.ru does not designate 203.0.113.50 as permitted sender) smtp.mailfrom=bounces@random-hacked-server.ru;
+       dkim=fail;
+       dmarc=fail (p=NONE sp=NONE dis=NONE) header.from=paypal-support.com
+From: "PayPal Support" <security@paypal-support.com>
+To: <victim@example.com>
+Reply-To: <attacker123@gmail.com>
+Subject: URGENT: Your Account Has Been Suspended!
+Date: Thu, 12 Oct 2023 09:20:00 -0700
+X-Originating-IP: [203.0.113.50]
+X-Mailer: PHP/5.4.16
+
+Please click the link below to verify your identity.
