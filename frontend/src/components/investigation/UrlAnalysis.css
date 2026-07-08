@@ -79,7 +79,7 @@
 
 .url-item-info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
   min-width: 0;
   flex-wrap: wrap;
@@ -89,13 +89,16 @@
   font-weight: 600;
   color: var(--text-main);
   font-size: 0.9rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .url-item-full {
   font-size: 0.8rem;
   color: var(--text-muted);
   font-family: var(--font-mono, 'Courier New', Courier, monospace);
-  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .url-reasons {

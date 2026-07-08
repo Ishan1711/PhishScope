@@ -75,6 +75,8 @@
   color: var(--text-main);
   font-size: 0.9rem;
   line-height: 1.6;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .ai-paragraph {

@@ -90,7 +90,7 @@
 
 .hop-row {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   font-size: 0.85rem;
 }
 
@@ -104,7 +104,9 @@
 .hop-value {
   color: var(--text-main);
   font-family: var(--font-mono, 'Courier New', Courier, monospace);
-  word-break: break-all;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .highlight-text {

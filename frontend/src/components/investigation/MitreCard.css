@@ -68,12 +68,16 @@
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-main);
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .mitre-description {
   font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.5;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .mitre-footer {
